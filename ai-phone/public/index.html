@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Phone - Speech to Text</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .record-btn {
+            display: block;
+            width: 200px;
+            height: 50px;
+            margin: 20px auto;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .record-btn:hover {
+            background-color: #c0392b;
+        }
+        .record-btn.recording {
+            background-color: #3498db;
+        }
+        .record-btn.recording:hover {
+            background-color: #2980b9;
+        }
+        .status {
+            text-align: center;
+            margin: 10px 0;
+            font-style: italic;
+            color: #7f8c8d;
+        }
+        .transcription {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+            min-height: 100px;
+        }
+        .note {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #7f8c8d;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>AI Phone - Speech to Text</h1>
+    
+    <div class="container">
+        <button id="recordBtn" class="record-btn">Start Recording</button>
+        <div id="status" class="status">Ready to record</div>
+        
+        <div class="transcription">
+            <h3>Transcription:</h3>
+            <p id="transcriptionText">Your transcribed text will appear here...</p>
+        </div>
+        
+        <div class="note">
+            <p>Note: This is a frontend interface. To use it, you'll need to implement a WebSocket or REST API server to handle the audio recording and transcription.</p>
+            <p>For now, you can use the command-line version by running <code>npm start</code> in the terminal.</p>
+        </div>
+    </div>
+
+    <script>
+        // This is a placeholder for future implementation
+        // In a complete implementation, this would connect to a backend API
+        
+        const recordBtn = document.getElementById('recordBtn');
+        const status = document.getElementById('status');
+        const transcriptionText = document.getElementById('transcriptionText');
+        
+        let isRecording = false;
+        
+        recordBtn.addEventListener('click', () => {
+            if (!isRecording) {
+                // Start recording
+                isRecording = true;
+                recordBtn.textContent = 'Stop Recording';
+                recordBtn.classList.add('recording');
+                status.textContent = 'Recording... Speak now';
+                
+                // This is where you would start the actual recording
+                // and connect to your backend
+                
+            } else {
+                // Stop recording
+                isRecording = false;
+                recordBtn.textContent = 'Start Recording';
+                recordBtn.classList.remove('recording');
+                status.textContent = 'Processing...';
+                
+                // Simulate processing delay
+                setTimeout(() => {
+                    status.textContent = 'Ready to record';
+                    transcriptionText.textContent = 'This is a placeholder. In a complete implementation, the actual transcription would appear here.';
+                }, 2000);
+                
+                // This is where you would stop the recording,
+                // send the audio to your backend, and receive the transcription
+            }
+        });
+    </script>
+</body>
+</html>
