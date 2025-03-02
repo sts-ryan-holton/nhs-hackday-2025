@@ -24,8 +24,9 @@ pids
 .cache/
 
 # Temporary files
-*.wav
 recording.wav
+temp_recording.wav
+tts_output.wav
 temp/
 
 # OS specific files
